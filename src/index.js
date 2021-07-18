@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const request = require("request");
 const app = express();
+const port = process.env.PORT || 8000;
 
 console.log(path.join(__dirname, "../puclic"));
 const static_path = path.join(__dirname, "../puclic");
@@ -57,6 +58,6 @@ app.post('/', (req, res) => {
 
 });
 
-app.listen(8000, () => {
-    console.log("RUN 8000")
+app.listen(port, () => {
+    console.log(`RUN ${port}`)
 });
