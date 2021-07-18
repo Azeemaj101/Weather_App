@@ -36,7 +36,7 @@ app.post('/', (req, res) => {
                     err: "Invalid City Name"
                 });
             } else {
-                let weather = "pictures/sunny.png";
+                let weather = "Pictures/sunny.png";
                 if (B.weather[0].main == "Smoke") {
                     weather = "pictures/wind.png";
                 } else if (B.weather[0].main == "Rain") {
