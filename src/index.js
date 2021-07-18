@@ -38,15 +38,15 @@ app.post('/', (req, res) => {
             } else {
                 let weather = "Pictures/sunny.png";
                 if (B.weather[0].main == "Smoke") {
-                    weather = "pictures/wind.png";
+                    weather = "Pictures/wind.png";
                 } else if (B.weather[0].main == "Rain") {
-                    weather = "pictures/rainy.png";
+                    weather = "Pictures/rainy.png";
                 } else if (B.weather[0].main == "Clear") {
-                    weather = "pictures/sunny.png";
+                    weather = "Pictures/sunny.png";
                 } else if (B.weather[0].main == "Clouds") {
-                    weather = "pictures/clouds.png";
+                    weather = "Pictures/clouds.png";
                 } else if (B.weather[0].main == "Haze") {
-                    weather = "pictures/haze.png";
+                    weather = "Pictures/haze.png";
                 }
                 res.render('weather', {
                     a1: B,
