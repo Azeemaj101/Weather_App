@@ -1,0 +1,25 @@
+main {
+    background: rgb(238, 174, 202);
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    height: 100vh;
+}
+
+.input-city {
+    width: 100vh;
+    background: rgb(238, 174, 234);
+    background: radial-gradient(circle, rgba(238, 174, 234, 1) 0%, rgba(148, 230, 233, 1) 100%);
+}
+
+.input-city input {
+    height: 60px;
+    background: transparent;
+    background: rgb(238, 174, 234);
+    background: radial-gradient(circle, rgba(238, 174, 234, 0.12228641456582634) 0%, rgba(148, 198, 233, 0.427608543417367) 100%);
+    outline: none;
+    border: 1px solid black;
+}
+
+.input-city input::placeholder {
+    text-align: center;
+    color: rgb(88, 88, 88);
+}

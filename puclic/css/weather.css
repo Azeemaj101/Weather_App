@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+main {
+    height: 100vh;
+    background: rgb(180, 174, 58);
+    background: linear-gradient(90deg, rgba(180, 174, 58, 1) 0%, rgba(29, 182, 253, 1) 52%, rgba(180, 174, 58, 1) 100%);
+}
+
+.img {
+    height: 110px;
+    width: 110px;
+}
+
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: 190px;
+    /* background-image: linear-gradient(to top, #86377b 20%, #27273c 80%); */
+}
+
+.bgTop {
+    z-index: 15;
+    opacity: 0.2;
+}
+
+.bgMiddle {
+    z-index: 10;
+    opacity: 0.3;
+}
+
+.bgBottom {
+    z-index: 5;
+    opacity: 0.2;
+}
+
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+}
+
+.waveTop {
+    background-size: 50% 100px;
+}
+
+.waveAnimation .waveTop {
+    animation: move-wave 3s;
+    -webkit-animation: move-wave 3s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.waveMiddle {
+    background-size: 50% 120px;
+}
+
+.waveAnimation .waveMiddle {
+    animation: move_wave 15s linear infinite;
+}
+
+.waveBottom {
+    background-size: 50% 100px;
+}
+
+.waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+}
+
+.data {
+    margin-top: 70px;
+}
+
+.img1 {
+    height: 25px;
+    width: 25px;
+}
+
+.country {
+    font-size: 10px;
+    padding-left: 2px;
+}
+
+.date {
+    color: rgb(230, 230, 230);
+}
+
+.container {
+    background: rgb(29, 182, 253);
+    background: linear-gradient(90deg, rgba(29, 182, 253, 1) 0%, rgba(180, 174, 58, 1) 52%, rgba(29, 182, 253, 1) 100%);
+    backdrop-filter: filter(5px);
+}

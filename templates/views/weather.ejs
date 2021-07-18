@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+    </style>
+    <link rel="stylesheet" href="css/weather.css">
+    <link rel="icon" href="<%= a2 %>" type="image/x-icon">
+
+    <title>
+        <%- a1.name.toUpperCase() %> - Weather</title>
+</head>
+
+<body>
+    <main class="d-flex align-items-center justify-content-center">
+        <div class="card text-white container mb-3 p-3" style="width: 320px;">
+            <div class="d-flex justify-content-center">
+                <img src="<%= a2 %>" class="card-img-top img" alt="...">
+            </div>
+            <div class="waveWrapper waveAnimation">
+                <div class="waveWrapperInner bgTop">
+                    <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+                </div>
+                <div class="waveWrapperInner bgMiddle">
+                    <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+                </div>
+                <div class="waveWrapperInner bgBottom">
+                    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title data text-center fw-bold"> <img src="pictures/location.png" class="card-img-top img1" alt="...">
+                    <%- a1.name.toUpperCase() %><span class="country"><%- a1.sys.country.toUpperCase() %></span></h3>
+                <div id="Date" class="text-center date">
+
+                </div>
+                <div class="fw-bold fs-1 text-center">
+                    <%- a1.main.temp%>&#8451
+                </div>
+                <div class="text-center date">
+                    MIN
+                    <%- a1.main.temp_min%>&#8451 | MAX
+                        <%- a1.main.temp_max%>&#8451
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+    <script>
+        var objToday = new Date(),
+            weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'),
+            dayOfWeek = weekday[objToday.getDay()],
+            domEnder = function() {
+                var a = objToday;
+                if (/1/.test(parseInt((a + "").charAt(0)))) return "th";
+                a = parseInt((a + "").charAt(1));
+                return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th"
+            }(),
+            dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
+            months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
+            curMonth = months[objToday.getMonth()],
+            curYear = objToday.getFullYear(),
+            curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
+            curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+            curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
+            curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+        var today = `${dayOfWeek} | ${curMonth} ${dayOfMonth} | ${curHour}:${curMinute}${curMeridiem}`;
+        // document.write(today);
+        document.getElementById("Date").innerHTML = today;
+        console.log(document.getElementById("Date").innerHTML);
+    </script>
+</body>
+
+</html>
