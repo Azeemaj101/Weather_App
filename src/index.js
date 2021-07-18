@@ -47,6 +47,8 @@ app.post('/', (req, res) => {
                     weather = "Pictures/clouds.png";
                 } else if (B.weather[0].main == "Haze") {
                     weather = "Pictures/haze.png";
+                } else if (B.weather[0].main == "Drizzle") {
+                    weather = "Pictures/drizzle.png";
                 }
                 res.render('weather', {
                     a1: B,
