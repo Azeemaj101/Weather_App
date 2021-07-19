@@ -36,13 +36,18 @@ app.post('/', (req, res) => {
                     err: "Invalid City Name"
                 });
             } else {
-                let weather = "Pictures/clouds.png";
+                let weather = `http://openweathermap.org/img/w/${B.weather[0].icon}.png`;
+                let DW = "Night";
+                // let weather = "Pictures/clouds.png";
+                let DN = weather.includes("d");
                 if (B.weather[0].main == "Smoke") {
                     weather = "Pictures/wind.png";
                 } else if (B.weather[0].main == "Rain") {
                     weather = "Pictures/rainy.png";
-                } else if (B.weather[0].main == "Clear") {
+                } else if (B.weather[0].icon == "01d") {
                     weather = "Pictures/sunny.png";
+                } else if (B.weather[0].icon == "01n") {
+                    weather = "Pictures/night.png";
                 } else if (B.weather[0].main == "Clouds") {
                     weather = "Pictures/clouds.png";
                 } else if (B.weather[0].main == "Haze") {
@@ -50,11 +55,17 @@ app.post('/', (req, res) => {
                 } else if (B.weather[0].main == "Drizzle") {
                     weather = "Pictures/drizzle.png";
                 } else if (B.weather[0].main == "Thunderstorm") {
-                    weather = "Pictures/storm.png";
+                    weather = "Pictures/thunderstorm.png";
+                }
+
+                if (DN == true) {
+                    DW = "Day";
                 }
                 res.render('weather', {
                     a1: B,
-                    a2: weather
+                    a2: weather,
+                    a3: DW,
+                    a4: B.weather[0].main
                 });
             }
         }

@@ -31,13 +31,17 @@
                 <div class="waveWrapperInner bgMiddle">
                     <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
                 </div>
+                <h2 class="text-danger"></h2>
                 <div class="waveWrapperInner bgBottom">
-                    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+                    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')">
+                        <h2></h2>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
                 <h3 class="card-title data text-center fw-bold"> <img src="Pictures/location.png" class="card-img-top img1" alt="...">
-                    <%- a1.name.toUpperCase() %><span class="country"><%- a1.sys.country.toUpperCase() %></span></h3>
+                    <%- a1.name.toUpperCase() %><span class="country"><%- a1.sys.country.toUpperCase() %>&nbsp </span>
+                </h3>
                 <div id="Date" class="text-center date">
 
                 </div>
@@ -46,8 +50,9 @@
                 </div>
                 <div class="text-center date">
                     MIN
-                    <%- a1.main.temp_min%>&#8451 | MAX
-                        <%- a1.main.temp_max%>&#8451
+                    <%- a1.main.temp_min%>&#8451 %> | MAX
+                        <%- a1.main.temp_max%>&#8451 %><br>
+                            <span class="text-light "><%- `${a3.toUpperCase()} | ${a4.toUpperCase()}` %></span>
                 </div>
             </div>
         </div>
@@ -64,27 +69,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
     <script>
-        var objToday = new Date(),
-            weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'),
-            dayOfWeek = weekday[objToday.getDay()],
-            domEnder = function() {
-                var a = objToday;
-                if (/1/.test(parseInt((a + "").charAt(0)))) return "th";
-                a = parseInt((a + "").charAt(1));
-                return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th"
-            }(),
-            dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
-            months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
-            curMonth = months[objToday.getMonth()],
-            curYear = objToday.getFullYear(),
-            curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
-            curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
-            curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
-            curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
-        var today = `${dayOfWeek} | ${curMonth} ${dayOfMonth} | ${curHour}:${curMinute}${curMeridiem}`;
-        // document.write(today);
-        document.getElementById("Date").innerHTML = today;
-        console.log(document.getElementById("Date").innerHTML);
+        setInterval(() => {
+            var objToday = new Date(),
+                weekday = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'),
+                dayOfWeek = weekday[objToday.getDay()],
+                domEnder = function() {
+                    var a = objToday;
+                    if (/1/.test(parseInt((a + "").charAt(0)))) return "th";
+                    a = parseInt((a + "").charAt(1));
+                    return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th"
+                }(),
+                dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
+                months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
+                curMonth = months[objToday.getMonth()],
+                curYear = objToday.getFullYear(),
+                curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
+                curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+                curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
+                curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+            var today = `${dayOfWeek} | ${curMonth} ${dayOfMonth} | ${curHour}:${curMinute}:${curSeconds}${curMeridiem}`;
+            // document.write(today);
+            document.getElementById("Date").innerHTML = today;
+        }, 1000);
+        // console.log(document.getElementById("Date").innerHTML);
     </script>
 </body>
 
