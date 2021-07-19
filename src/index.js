@@ -36,7 +36,7 @@ app.post('/', (req, res) => {
                     err: "Invalid City Name"
                 });
             } else {
-                let weather = "Pictures/sunny.png";
+                let weather = "Pictures/clouds.png";
                 if (B.weather[0].main == "Smoke") {
                     weather = "Pictures/wind.png";
                 } else if (B.weather[0].main == "Rain") {
@@ -49,6 +49,8 @@ app.post('/', (req, res) => {
                     weather = "Pictures/haze.png";
                 } else if (B.weather[0].main == "Drizzle") {
                     weather = "Pictures/drizzle.png";
+                } else if (B.weather[0].main == "Thunderstorm") {
+                    weather = "Pictures/storm.png";
                 }
                 res.render('weather', {
                     a1: B,
